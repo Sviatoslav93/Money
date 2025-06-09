@@ -1,16 +1,9 @@
 namespace Monetary;
 
-public readonly record struct Money : IEquatable<Money>, IComparable<Money>
+public readonly record struct Money(
+    decimal Amount,
+    Currency Currency) : IEquatable<Money>, IComparable<Money>
 {
-    public decimal Amount { get; init; }
-    public Currency Currency { get; init; }
-
-    public Money(decimal amount, Currency currency)
-    {
-        Amount = amount;
-        Currency = currency;
-    }
-
     public override string ToString() => $"{Amount} {Currency}";
 
     public static Money operator +(Money a, Money b)

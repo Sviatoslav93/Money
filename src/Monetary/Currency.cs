@@ -1,10 +1,8 @@
 namespace Monetary;
 
-public readonly record struct Currency(string Code)
+public readonly record struct Currency
 {
-    public string Code { get; } = Code;
-
-    public override string ToString() => Code;
-
-    public static implicit operator Currency(string code) => new Currency(code);
+    public string Code { get; init; }
+    public static Currency Eur => new() { Code = "EUR" };
+    public static Currency Usd => new() { Code = "USD" };
 }
